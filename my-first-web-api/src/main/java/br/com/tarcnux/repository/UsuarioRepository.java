@@ -5,19 +5,30 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import br.com.tarcnux.ExceptionHandler.BusinessException;
+import br.com.tarcnux.ExceptionHandler.CampoObrigatorioException;
 import br.com.tarcnux.model.Usuario;
 
 @Repository
 public class UsuarioRepository {
 	
-	//Repositório Mocado
-	
-	public void save(Usuario usuario) {
-		System.out.println("SAVE - Recebendo o usuário na camada de reposotório");
+	//Repositório Mocado	
+	public void save(Usuario usuario) {		
+		if(usuario.getLogin() == null)
+			throw new BusinessException("O Campo login é obrigatório para SALVAR");
+		
+		System.out.println("SAVE - Recebendo o usuário na camada de repositório");
 		System.out.println(usuario);
 	}
 	
-	public void update(Usuario usuario){
+	public void update(Usuario usuario){		
+		
+		if(usuario.getId() == null)
+			throw new CampoObrigatorioException("id");
+		
+		if(usuario.getLogin() == null)
+			throw new CampoObrigatorioException("login");
+		
         System.out.println("UPDATE - Recebendo o usuário na camada de repositório");
         System.out.println(usuario);
     }
