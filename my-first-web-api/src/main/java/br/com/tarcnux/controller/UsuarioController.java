@@ -16,7 +16,7 @@ import br.com.tarcnux.model.Usuario;
 import br.com.tarcnux.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 	
 	@Autowired
